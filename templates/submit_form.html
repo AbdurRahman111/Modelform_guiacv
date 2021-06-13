@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Submit Form{% endblock %}
+
+{% block submit_form %}active{% endblock %}
+
+{% block body %}
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <b> {{message}}</b>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+
+<form class="container pt-5" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <hr><h2>Add a New Person Here : </h2><hr>
+        {{ form|crispy }}<br>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

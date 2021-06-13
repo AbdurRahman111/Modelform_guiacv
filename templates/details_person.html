@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{get_person.Name}} - Details {% endblock %}
+
+
+
+{% block body %}
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <b> {{message}}</b>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+<a class="btn btn-warning" href="{% url 'see_all' %}"> << Go Back</a>
+<hr>
+<h3 class="pb-4">{{get_person.Name}} Details :</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name :</th>
+      <th scope="col">{{get_person.Name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Telephone No (1) :</th>
+      <td>{{get_person.Telephone1}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Telephone No (2) :</th>
+      <td>{{get_person.Telephone2}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Celular</th>
+      <td>{{get_person.Celular}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Email</th>
+      <td>{{get_person.Email}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Website</th>
+      <td>{{get_person.Website}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Address</th>
+      <td>{{get_person.Address}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">City</th>
+      <td>{{get_person.City}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Island</th>
+      <td>{{get_person.Island}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Category</th>
+      <td>{{get_person.Category}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Sub Category</th>
+      <td>{{get_person.Sub_Category}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Description</th>
+      <td>{{get_person.Description}}</td>
+    </tr>
+
+  <tr>
+      <th scope="row">Photo1</th>
+      <td><img src="/media/{{get_person.Photo1}}" class="rounded float-left" alt="..." width="200" height="200"></td>
+    </tr>
+{% if get_person.Photo2 %}
+  <tr>
+      <th scope="row">Photo2</th>
+      <td><img src="/media/{{get_person.Photo2}}" class="rounded float-left" alt="..." width="200" height="200"></td>
+    </tr>
+{% endif %}
+
+
+{% if get_person.Photo3 %}
+  <tr>
+      <th scope="row">Photo3</th>
+      <td><img src="/media/{{get_person.Photo3}}" class="rounded float-left" alt="..." width="200" height="200"></td>
+    </tr>
+  {% endif %}
+
+{% if get_person.Photo4 %}
+  <tr>
+      <th scope="row">Photo4</th>
+      <td><img src="/media/{{get_person.Photo4}}" class="rounded float-left" alt="..." width="200" height="200"></td>
+    </tr>
+{% endif %}
+  </tbody>
+</table>
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

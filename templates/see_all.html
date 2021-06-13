@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Submit Form{% endblock %}
+
+{% block see_all %}active{% endblock %}
+
+{% block body %}
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <b> {{message}}</b>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+
+<hr>
+{% if all_person %}
+
+{% for i in all_person %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/media/{{i.Photo1}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{i.Name}}</h5>
+        <p class="card-text">
+          <a class="btn btn-info btn-sm" href="{% url 'details_person' i.id %}">Details</a>
+      <a class="btn btn-success btn-sm text-white" href="{% url 'edit_person' i.id %}">Edit</a>
+      <a class="btn btn-danger btn-sm text-white" href="{% url 'delete_person' i.id %}">Delete</a>
+        </p>
+        <p class="card-text"><small class="text-muted">Registered Date : {{i.time}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% else %}
+
+<h4 class="text-center">No One To Show</h4>
+
+{% endif %}
+
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
